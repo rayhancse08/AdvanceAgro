@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'header.html' %}
+
+</head>
+<script type="text/javascript">
+
+</script>
+
+
+
+
+<body>
+<br>
+<br>
+<br>
+<hr>
+<h3 class="bg-info text-dark" style="text-align: center"> দানাদার খাদ্যের মিশ্রণ তালিকা</h3>
+<hr>
+<div class="fisrtRow">
+    <div class="container">
+        <div class="row">
+        <div class="col-sm-6">
+       <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+   <caption align="center" style="text-align: center">দানাদার খাদ্যের মিশ্রণ তালিকা ১</caption>
+           <thead class="thead-light">
+    <tr>
+        <th style="text-align: center">দানাদার খাদ্য</th>
+        <th style="text-align: center"> পরিমান (কেজি) </th>
+
+    </tr>
+            </thead>
+    <tr style="text-align: center">
+        <td>
+            ভুট্টা ভাংগা
+        </td>
+
+        <td>
+        {{formula1.cornMix}}
+        </td>
+    </tr>
+     <tr style="text-align: center">
+        <td>
+            গম ভাংগা
+        </td>
+
+        <td>
+           {{formula1.wheatMix}}
+
+        </td>
+    </tr>
+
+
+     <tr style="text-align: center">
+        <td>
+            গমের ভুষি
+        </td>
+
+        <td>
+           {{formula1.wheatBhushi}}
+
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            রাইস ব্রান
+        </td>
+
+        <td>
+        {{formula1.riceBran}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           মুগ/মুশুরী/সয়াবিন
+        </td>
+
+        <td>
+        {{formula1.dalMix}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            খেসারীর ছোল্কা
+        </td>
+
+        <td>
+        {{formula1.dalBhushi}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            তিলের খৈল
+        </td>
+
+        <td>
+        {{formula1.khoil}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           লাইমস্টোন/ডি,সি,পি
+        </td>
+
+        <td>
+        {{formula1.limestonDCP}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            সোডা
+        </td>
+
+        <td>
+        {{formula1.soda}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            লবণ
+        </td>
+
+        <td>
+        {{formula1.salt}}
+        </td>
+    </tr>
+           <tr style="text-align: center">
+        <td>
+            ভিটামিন প্রিমিক্স
+        </td>
+
+        <td>
+        {{formula1.vitamin}}
+        </td>
+    </tr>
+</table>
+
+        </div>
+
+
+
+           <div class="col-sm-6">
+       <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+
+   <caption align="center" style="text-align: center">দানাদার খাদ্যের মিশ্রণ তালিকা ২</caption>
+            <thead class="thead-light">
+    <tr>
+        <th style="text-align: center">দানাদার খাদ্য</th>
+        <th style="text-align: center"> পরিমান (কেজি) </th>
+    </tr>
+            </thead>
+    <tr style="text-align: center">
+        <td>
+            ভুট্টা ভাংগা
+        </td>
+
+        <td>
+        {{formula2.cornMix}}
+        </td>
+    </tr>
+     <tr style="text-align: center">
+        <td>
+            গম ভাংগা
+        </td>
+
+        <td>
+           {{formula2.wheatMix}}
+
+        </td>
+    </tr>
+
+
+     <tr style="text-align: center">
+        <td>
+            গমের ভুষি
+        </td>
+
+        <td>
+           {{formula2.wheatBhushi}}
+
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            রাইস ব্রান
+        </td>
+
+        <td>
+        {{formula2.riceBran}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           সয়াবিন
+        </td>
+
+        <td>
+        {{formula2.dalMix}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            খেসারীর ভূষি
+        </td>
+
+        <td>
+        {{formula2.dalBhushi}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            তিলের//সরিষার খৈল
+        </td>
+
+        <td>
+        {{formula2.khoil}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           লাইমস্টোন/ডি,সি,পি
+        </td>
+
+        <td>
+        {{formula2.limestonDCP}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            সোডা
+        </td>
+
+        <td>
+        {{formula2.soda}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            লবণ
+        </td>
+
+        <td>
+        {{formula2.salt}}
+        </td>
+    </tr>
+           <tr style="text-align: center">
+        <td>
+            ভিটামিন প্রিমিক্স
+        </td>
+
+        <td>
+        {{formula2.vitamin}}
+        </td>
+    </tr>
+</table>
+
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="secondRow">
+    <div class="container">
+        <div class="row">
+        <div class="col-sm-6">
+       <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+   <caption align="center" style="text-align: center">দানাদার খাদ্যের মিশ্রণ তালিকা ৩</caption>
+            <thead class="thead-light">
+    <tr>
+        <th style="text-align: center">দানাদার খাদ্য</th>
+        <th style="text-align: center"> পরিমান (কেজি) </th>
+    </tr>
+            </thead>
+    <tr style="text-align: center">
+        <td>
+            ভুট্টা ভাংগা
+        </td>
+
+        <td>
+        {{formula3.cornMix}}
+        </td>
+    </tr>
+     <tr style="text-align: center">
+        <td>
+            গম ভাংগা
+        </td>
+
+        <td>
+           {{formula3.wheatMix}}
+
+        </td>
+    </tr>
+
+
+     <tr style="text-align: center">
+        <td>
+            গমের ভুষি
+        </td>
+
+        <td>
+           {{formula3.wheatBhushi}}
+
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            রাইস ব্রান
+        </td>
+
+        <td>
+        {{formula3.riceBran}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           যে কোন ডাল ভাংগা
+        </td>
+
+        <td>
+        {{formula3.dalMix}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           ছোলা/মটরের/মশুরের ভুষি
+        </td>
+
+        <td>
+        {{formula3.dalBhushi}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            তিলের খৈল
+        </td>
+
+        <td>
+        {{formula3.khoil}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           লাইমস্টোন/ডি,সি,পি
+        </td>
+
+        <td>
+        {{formula3.limestonDCP}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            সোডা
+        </td>
+
+        <td>
+        {{formula3.soda}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            লবণ
+        </td>
+
+        <td>
+        {{formula3.salt}}
+        </td>
+    </tr>
+           <tr style="text-align: center">
+        <td>
+            ভিটামিন প্রিমিক্স
+        </td>
+
+        <td>
+        {{formula3.vitamin}}
+        </td>
+    </tr>
+</table>
+
+        </div>
+
+
+
+           <div class="col-sm-6">
+       <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+   <caption align="center" style="text-align: center">দানাদার খাদ্যের মিশ্রণ তালিকা ৪</caption>
+            <thead class="thead-light">
+    <tr>
+        <th style="text-align: center">দানাদার খাদ্য</th>
+        <th style="text-align: center"> পরিমান (কেজি) </th>
+    </tr>
+            </thead>
+    <tr style="text-align: center">
+        <td>
+            ভুট্টা ভাংগা
+        </td>
+
+        <td>
+        {{formula4.cornMix}}
+        </td>
+    </tr>
+     <tr style="text-align: center">
+        <td>
+            গম ভাংগা
+        </td>
+
+        <td>
+           {{formula4.wheatMix}}
+
+        </td>
+    </tr>
+
+
+     <tr style="text-align: center">
+        <td>
+            গমের ভুষি
+        </td>
+
+        <td>
+           {{formula4.wheatBhushi}}
+
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            রাইস ব্রান
+        </td>
+
+        <td>
+        {{formula4.riceBran}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           সয়াবিন/মুশুরি/কলাই
+        </td>
+
+        <td>
+        {{formula4.dalMix}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            খেসারীর ভূষি
+        </td>
+
+        <td>
+        {{formula4.dalBhushi}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            তিলের//সরিষার খৈল
+        </td>
+
+        <td>
+        {{formula4.khoil}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           লাইমস্টোন/ডি,সি,পি
+        </td>
+
+        <td>
+        {{formula4.limestonDCP}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            সোডা
+        </td>
+
+        <td>
+        {{formula4.soda}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            লবণ
+        </td>
+
+        <td>
+        {{formula4.salt}}
+        </td>
+    </tr>
+           <tr style="text-align: center">
+        <td>
+            ভিটামিন প্রিমিক্স
+        </td>
+
+        <td>
+        {{formula4.vitamin}}
+        </td>
+    </tr>
+</table>
+
+        </div>
+        </div>
+    </div>
+</div>
+<div class="printPage">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" align="right">
+                <input type="button" value="Print" onclick="window.print()">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>
+

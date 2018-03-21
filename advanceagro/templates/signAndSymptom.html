@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+    {% load staticfiles %}
+</head>
+<body>
+<br>
+<br><br>
+<hr>
+<div class="firstRow">
+    <div class="container">
+        <h3 class="bg-info text-dark" style="text-align: center">Disease Sign and Symptom </h3>
+
+        <div class="row">
+
+            <div class="col-sm-6">
+                <img class="img-fluid" src="{% static '/images/signAndSymptom1.jpg' %}" width="540px" height="621px">
+
+            </div>
+            <div class="col-sm-6">
+                <img class="img-fluid" src="{% static '/images/signAndSymptom2.jpg' %}" width="540px" height="621px">
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>

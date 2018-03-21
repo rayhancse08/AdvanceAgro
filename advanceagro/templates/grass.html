@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+</head>
+<body>
+
+<br>
+<br>
+<br>
+<hr>
+
+<div class="grass">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+            <h3 class="bg-info text-dark" style="text-align: center">ঘাস পরিচিতি</h3>
+                 {% for item in grass %}
+                <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+
+
+                        <thead class="thead-light">
+                        <tr>
+        <th style="text-align: center">ঘাস পরিচিতি</th>
+                            <td style="text-align: center">
+                       {{ item.grassName }}
+                    </td>
+                        </tr>
+                        <tr>
+        <th style="text-align: center"> উপযোগী জমি </th><td style="text-align: left">
+                       {{ item.suitableField }}
+                    </td>
+                            </tr>
+                        <tr>
+        <th style="text-align: center"> চাষের সময় </th>
+                            <td style="text-align: left">{{ item.plantationTime }}</td>
+                            </tr>
+                        <tr>
+        <th style="text-align: center"> চাষের পদ্ধতি </th>
+                             <td style="text-align: left">{{ item.plantationProcedure }}</td>
+                        </tr>
+                        <tr>
+        <th style="text-align: center"> সার   </th>
+                            <td style="text-align: left">{{ item.fertilizer }}</td>
+                            </tr>
+                        <tr>
+        <th style="text-align: center"> পানি সেচ</th>
+                            <td style="text-align: left">{{ item.waterIrrigation }}</td>
+                            </tr>
+                        <tr>
+        <th style="text-align: center"> ঘাস সংগ্রহ</th>
+                            <td style="text-align: left">{{ item.grassCollection }}</td>
+                            </tr>
+                        <tr>
+        <th style="text-align: center"> সমস্যা ও সতর্কতা</th>
+                  <td style="text-align: left">{{ item.problemAndCaution }}</td>
+
+</tr>
+                        </thead>
+
+
+
+                </table>
+                    <br><br>
+                    {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>

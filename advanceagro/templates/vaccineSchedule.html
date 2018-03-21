@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+</head>
+<body>
+<br>
+<br>
+<br>
+<hr>
+<div class="vaccineSchedule">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-12">
+            <h2 class="bg-info text-dark" style="text-align: center">গবাদি প্রাণির বিভিন্ন রােগরে টিকা প্রদাণের শিডিউল</h2>
+            <hr>
+                <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+                      <tr>
+                        <thead class="thead-light">
+        <th style="text-align: center">টিকার নাম</th>
+        <th style="text-align: center"> প্রয়োগ মাত্রা </th>
+        <th style="text-align: center"> কতদিন পর পর </th>
+        <th style="text-align: center"> কোন বয়সে </th>
+        <th style="text-align: center"> প্রয়ােগ স্থান  </th>
+        <th style="text-align: center"> সংরক্ষণ তাপমাত্রা</th>
+
+    </tr>
+                        </thead>
+                    {% for item in vaccine %}
+                    <tr>
+                        <td style="text-align: center">
+                            {{item.vaccinename}}
+                        </td>
+
+                     <td style="text-align: center">
+                           {{item.vaccinedose}}
+                        </td>
+                     <td style="text-align: center">
+                            {{item.vaccineInterval}}
+                        </td>
+                     <td style="text-align: center">
+                           {{item.eligableAge}}
+                        </td>
+                     <td style="text-align: center">
+                           {{item.pushingPosition}}
+                        </td>
+                     <td style="text-align: center">
+                           {{item.preserveTemp}}
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>

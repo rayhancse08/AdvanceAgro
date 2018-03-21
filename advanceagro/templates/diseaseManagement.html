@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+</head>
+<body>
+<br>
+<br>
+<div clsss="diseaseManagement">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 style="text-align: center">চিকিৎসা (ঔষধ/টিকা ইত্যাদি) সংক্রান্ত তথ্য
+</h2>
+                 <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+                      <tr>
+                        <thead class="thead-light">
+        <th style="text-align: center">গরু নং</th>
+        <th style="text-align: center">ক্ষুরারােগ টিকা প্রদাণের সময় </th>
+        <th style="text-align: center"> পরবর্তী প্রদাণের তারিখ </th>
+        <th style="text-align: center"> তড়কা টিকা প্রদাণের সময়</th>
+        <th style="text-align: center"> পরবর্তী প্রদাণের তারিখ</th>
+         <th style="text-align: center"> বাদলা টিকা প্রদাণের সময়</th>
+        <th style="text-align: center"> পরবর্তী প্রদাণের তারিখ</th>
+         <th style="text-align: center"> গলাফুলা টিকা প্রদাণের সময়</th>
+        <th style="text-align: center"> পরবর্তী প্রদাণের তারিখ</th>
+         <th style="text-align: center"> কৃমিনাশক প্রদাণের সময়</th>
+        <th style="text-align: center"> পরবর্তী প্রদাণের তারিখ</th>
+
+
+    </tr>
+                        </thead>                   {% for item in disease %}
+                        <tr>
+                            <td style="text-align: center">
+                            {{item.cowNo}}
+                        </td>
+
+                             <td style="text-align: center">
+                              {{item.ScheduleTime}}
+                                 {%  for item in vaccine %}
+                                     {{ item.NextScheduleTime }}
+                                 {% endfor %}
+                        </td>
+
+                             <td style="text-align: center">
+
+                            {{lastvaccine.NextScheduleTime}}
+
+
+
+                        </td>
+
+
+                        </tr>
+                        {% endfor %}
+                        </thead>
+                      </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<form>
+
+
+
+<div class="form-group">
+      <label for="sel1">Select Cow </label>
+      <select class="form-control" id="sel1">
+          {% for item in disease %}
+        <option>{{item.cowNo}}</option>
+        {% endfor %}
+      </select>
+
+</div>
+</body>
+</html>

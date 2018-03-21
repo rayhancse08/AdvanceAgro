@@ -1,0 +1,106 @@
+
+<html lang="en">
+
+<head>
+{% include 'header.html' %}
+</head>
+
+<body>
+<br>
+<br>
+<h3 class="bg-info text-white"></h3>
+{% for item in res %}
+    <table style="width: 30%">
+   <caption>দুধাঁলো গাভীর জন্য সুষম দানাদার খাদ্যের মিশ্রণ</caption>
+    <tr>
+        <th>দানাদার খাদ্য</th>
+        <th> পরিমান (কেজি) </th>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            ভুট্টা ভাংগা
+        </td>
+
+        <td>
+        {{item.corn_mix}}
+        </td>
+    </tr>
+     <tr style="text-align: center">
+        <td>
+            গম ভাংগা
+        </td>
+
+        <td>
+        {{item.wheat_mix}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            রাইস ব্রান
+        </td>
+
+        <td>
+        {{item.rice_bran_mix}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           মুগ/মুশুরী/সয়াবিন
+        </td>
+
+        <td>
+        {{item.dal_mix}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            খেসারীর ছোল্কা
+        </td>
+
+        <td>
+        {{item.dal_khasri_cholka}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            তিলের খৈল
+        </td>
+
+        <td>
+        {{item.tilar_khol}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+           লাইমস্টোন/ডি,সি,পি
+        </td>
+
+        <td>
+        {{item.limeston_dcp}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            সোডা
+        </td>
+
+        <td>
+        {{item.soda}}
+        </td>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            লবণ
+        </td>
+
+        <td>
+        {{item.salt}}
+        </td>
+    </tr>
+</table>
+
+
+
+{% endfor %}
+</body>
+</html>

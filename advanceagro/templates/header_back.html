@@ -1,0 +1,46 @@
+{% load staticfiles %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Advange Agro Bangladesh Ltd. </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="rssdf;lgk">
+        <meta name="author" content="">
+        <link rel="stylesheet" href="{% static '/css/style1.css' %}">
+        <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+        <script src="{% static '/js/jquery.min.js' %}"></script>
+        <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
+        <link href="{% static '/css/jquerysctipttop.css' %}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+</head>
+
+<div class="header">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Advance Agro Bangladesh Ltd.</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'home' %}">HOME</a></li>
+                        <li><a href="{% url 'about' %}">ABOUT</a></li>
+                        <li class="dropdown">
+                        <a class ="dropdown-toggle" href="#" data-toggle="dropdown">FOOD
+                        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class ="active"><a href="{% url 'food' %} ">Cows Food</a></li>
+          <li><a href="#">Goat Food</a></li>
+          <li><a href="{% url 'mixed_food' %}">Food Rationing</a></li>
+            <li><a href="{% url 'bodyWeightCal' %}">Body Weight Calculation</a></li>
+            <li><a href="{% url 'dmiFood' %}">DMI Food</a></li>
+        </ul>
+                        </li>
+                        <li><a href="#">GRASS</a></li>
+                        <li><a href="#">DISEASE</a></li>
+                        <li><a href="#">MEDICINE</a></li>
+                    </ul>
+                </div>
+            </nav>
+</div>
