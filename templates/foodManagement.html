@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+     function validate() {
+         if(document.searchFoodManagement.select_cow.value=="")
+         {
+             alert("Please select Cow");
+             document.searchFoodManagement.select_cow.focus();
+             return false;
+         }
+      if(document.searchFoodManagement.startdatepicker.value=="")
+         {
+             alert("Please select start date range");
+             document.searchFoodManagement.startdatepicker.focus();
+             return false;
+         }
+         if(document.searchFoodManagement.enddatepicker.value=="")
+         {
+             alert("Please select end date range");
+             document.searchFoodManagement.enddatepicker.focus();
+             return false;
+         }
+         return (true);
+     }
+    </script>
+</head>
+<body>
+
+<br>
+<br>
+<br>
+<hr>
+<div class="container">
+<h3 class="bg-info text-dark" style="text-align: center">Food Managements</h3>
+<hr>
+<form method="get" action="/searchFoodManagement/" name="searchFoodManagement" onsubmit="return(validate());">
+    <div class="row">
+
+        <div class="col-sm-2">
+
+            <div class="form-group">
+      <label for="sel1">Select Cow</label>
+      <select class="form-control" id="sel1" name="select_cow">
+
+        <option selected>{{ select_cow }} </option>
+          {%  for item in unselected_cows %}
+        <option> {{ item.cow__cow_no }}</option>
+          {% endfor %}
+
+
+      </select>
+
+ </div>
+     </div>
+
+
+
+<div class="col-sm-5">
+    <label>Start Date</label>
+    <input id="startdatepicker" width="250" name="startdatepicker" placeholder="mm/dd/yy" value="{{ start_date }}" />
+    <script>
+        $('#startdatepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+</div>
+
+    <div class="col-sm-5">
+    <label>End Date</label>
+    <input id="enddatepicker" width="250" name="enddatepicker" placeholder="mm/dd/yyyy" value="{{ end_date }}"/>
+    <script>
+        $('#enddatepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+</div>
+    </div>
+<button type="submit" class="btn btn-primary">Get Food Records</button>
+
+ </form>
+</div>
+<br>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+         {%  if selected_cows %}
+            <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+    <tr>
+                        <thead class="thead-light">
+        <th style="text-align: center"> গরু নং</th>
+
+
+                        <th style="text-align: center"> তারিখ</th>
+                        <th style="text-align: center"> দানাদার খাদ্য(কে.জি)</th>
+                        <th style="text-align: center"> ঘাস(কে.জি)</th>
+                        <th style="text-align: center"> খড়(কে.জি)</th>
+                        <th style="text-align: center"> পানি(লিটার)</th>
+
+
+
+
+        </thead>
+    </tr>
+
+                <tr>
+
+                        <td style="text-align: center">
+                        {{ select_cow }}
+                        </td>
+                      <td style="text-align: center">
+                          {% for item in selected_cows %}
+                             {{ item.date }}
+                              <br>
+                          {% endfor %}
+                      </td>
+                <td style="text-align: center">
+                          {% for item in selected_cows %}
+                             {{ item.mixed_food }}
+                              <br>
+                          {% endfor %}
+                      </td>
+
+                <td style="text-align: center">
+                          {% for item in selected_cows %}
+                             {{ item.grass }}
+                              <br>
+                          {% endfor %}
+                      </td>
+                <td style="text-align: center">
+                          {% for item in selected_cows %}
+                             {{ item.khor }}
+                              <br>
+                          {% endfor %}
+                      </td>
+                 <td style="text-align: center">
+                          {% for item in selected_cows %}
+                             {{ item.water }}
+                              <br>
+                          {% endfor %}
+                      </td>
+                </tr>
+
+            <tr>
+
+                <td style="text-align: center">Total</td>
+                <td style="text-align: center">{{ count }}</td>
+                <td style="text-align: center">{{ total_mixed_food.mixed_food__sum }}</td>
+                <td style="text-align: center">{{ total_grass.grass__sum }}</td>
+                <td style="text-align: center">{{ total_khor.khor__sum }}</td>
+                <td style="text-align: center">{{ total_water.water__sum }}</td>
+            </tr>
+
+            </table>
+        {% endif %}
+        <p style="text-align: center">{{ no_data_found }}</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<footer>
+    {% include 'footer.html' %}
+</footer>
+</html>

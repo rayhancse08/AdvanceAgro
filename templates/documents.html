@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+</head>
+<body>
+<br>
+<br>
+<br>
+<hr>
+<div class="Document">
+    <div class="container">
+    <hr>
+    <h3 class="bg-info text-dark" style="text-align: center"> গুরুত্বপূর্ণ তথ্য</h3>
+      <hr>
+        <div class="row">
+
+            <div class="col-sm-6">
+
+                {% for item in leftcol %}
+
+                   <textarea class="form-control" rows="5" id="comment">{{item.documents}} </textarea>
+                    <br>
+                {% endfor %}
+            </div>
+        <div class="col-sm-6">
+            {% for item in rightcol %}
+
+                   <textarea class="form-control" rows="5" id="comment">{{item.documents}} </textarea>
+
+                    <br>
+                {% endfor %}
+        </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>

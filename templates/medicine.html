@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+</head>
+<body>
+<br>
+<br>
+<br>
+<hr>
+<div class="medicine">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2  class="bg-danger text-dark" style="text-align: center">গাভীর রোগ-ব্যাধি ও তার প্রতিকার </h2>
+            <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+            <tr>
+                        <thead class="thead-light">
+                        <th style="text-align: center">গাভীর রোগ-ব্যাধি</th>
+        <th style="text-align: center">প্রতিকার </th>
+                        </thead>
+            </tr>
+                 {% for item in medicine %}
+                     <tr>
+                     <td>
+                         {{ item.diseaseName }}
+                     </td>
+                     <td>
+                         {{ item.medicineName }}
+                     </td>
+                     </tr>
+
+                  {%  endfor %}
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>

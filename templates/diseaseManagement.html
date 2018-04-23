@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+    <script type="text/javascript">
+     function  validate() {
+
+         if (document.searchDiseaseManagement.select_cow.value=="")
+         {
+             alert("Please select cow");
+             document.searchDiseaseManagement.select_cow.focus()
+             return false
+         }
+    return (true)
+     }
+    </script>
+</head>
+<body>
+<br>
+<br>
+<br>
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+             <h3  class="bg-info text-dark" style="text-align: center">Vaccine Schedule in {{ current_month }}, {{ current_year }}</h3>
+        <hr>
+        <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+            <tr>
+                <thead class="thead-light">
+        <th style="text-align: center"> গরু নং</th>
+
+        <th style="text-align: center"> টিকার নাম </th>
+            <th style="text-align: center"> তারিখ </th>
+
+
+        </thead>
+            </tr>
+             {%  for item in vaccine_in_current_month %}
+            <tr>
+
+                <td style="text-align: center">{{ item.cow.cow_no }}</td>
+                <td style="text-align: center;">{{ item.disease.name }}</td>
+                <td style="text-align: center">{{ item.NextScheduleTime }}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+<h3 class="bg-info text-dark" style="text-align: center">Vaccine History</h3>
+<hr>
+    <div class="row">
+
+        <div class="col-sm-2">
+        <form method="get" action="/searchDiseaseManagement/" name="searchDiseaseManagement" onsubmit="return (validate())">
+            <div class="form-group">
+      <label for="sel1">Select Cow </label>
+      <select class="form-control" id="sel1" name="select_cow">
+      <option selected>{{ select_cow }} </option>
+          {% for item in unselected_cow %}
+        <option>{{item.cow__cow_no}}</option>
+        {% endfor %}
+      </select>
+ </div>
+
+        <button type="submit" class="btn btn-primary">Vaccine Info</button>
+
+ </form>
+</div>
+
+
+<div class="col-sm-10">
+
+    <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+    <tr>
+                        <thead class="thead-light">
+        <th style="text-align: center"> গরু নং</th>
+        {% for item in disease %}
+        <th style="text-align: center"> {{ item.name }} </th>
+        {%  endfor %}
+
+        </thead>
+    </tr>
+
+    <tr>
+
+        <td style="text-align: center">
+            {%  for item in selected_cow  %}
+        {{ item.cow__cow_no }}
+            {% endfor %}
+        </td>
+      <td style="text-align: center">
+          {% for item in torka %}
+              {{ item.ScheduleTime }}
+              <br>
+          {% endfor %}
+      </td>
+    <td style="text-align: center">
+          {% for item in badla %}
+              {{ item.ScheduleTime }}
+              <br>
+          {% endfor %}
+      </td>
+    <td style="text-align: center">
+          {% for item in fmd %}
+              {{ item.ScheduleTime }}
+              <br>
+          {% endfor %}
+      </td>
+    <td style="text-align: center">
+          {% for item in golafula %}
+              {{ item.ScheduleTime }}
+              <br>
+          {% endfor %}
+      </td>
+
+    <td style="text-align: center">
+          {% for item in krimi %}
+              {{ item.ScheduleTime }}
+              <br>
+          {% endfor %}
+      </td>
+    </tr>
+
+    </table>
+
+
+
+    </div>
+
+</div>
+    </div>
+
+
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>

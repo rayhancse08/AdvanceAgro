@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+</head>
+<body>
+<br>
+<br>
+<br>
+<hr>
+
+<div class="container">
+    <h3 class="bg-info text-dark" style="text-align: center"> Uploaded Files</h3>
+
+<hr>
+    <div class="row">
+        <div class="col-sm-12">
+             <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+    <tr>
+                        <thead class="thead-light">
+        <th style="text-align: center"> File No </th>
+
+
+                        <th style="text-align: center"> File</th>
+
+                        </thead>
+    </tr>
+                 {%  for item in file %}
+                <tr>
+                    <td style="text-align: center"> {{ item.id }}</td>
+                <td style="text-align: center"> <a href="{{ item.file.url }}">{{ item.name }}</a></td>
+                </tr>
+                     {%  endfor %}
+             </table>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+<footer>
+    {% include 'footer.html' %}
+</footer>
+</html>
