@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {% include 'header.html' %}
+    {% load staticfiles %}
+    <script type="text/javascript">
+        function bodyWeightCal()
+        {
+            var bodyLength=prompt("দৈর্ঘ্য (L): ","ইঞ্চি");
+            var bodyGirth=prompt("বুকের বেড়ের (G) মাপ: ","ইঞ্চি")
+            var bodyWeight=(bodyLength*bodyGirth*bodyGirth)/660;
+            alert("গরুর ওজন: "+bodyWeight+"কেজি");
+        }
+
+        function validate()
+        {
+            if(document.bodyWeight.bodyLength.value=="")
+            {
+                alert("Please enter Body Length");
+                document.bodyWeight.bodyLength.focus();
+                return false;
+            }
+            if(document.bodyWeight.bodyGrith.value=="")
+            {
+                alert("Please enter Body Grith");
+                document.bodyWeight.bodyGrith.focus();
+                return false;
+            }
+            return(true)
+        }
+    </script>
+
+</head>
+<body>
+<br>
+<br>
+<br>
+<hr>
+<div class="bodyWeightCal">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="{% static '/images/bodyWeight.jpg' %}" width="550px" height="300px">
+                <p>
+                    দৈহিক ওজন নির্ণয় গুরুত্বপূর্ণ কাজ। কেননা গরুর খাদ্য সরবরাহ,ঔষধ সরবরাহ ইত্যাদি কাজগুলো করতে হয় দৈহিক ওজনের ভিত্তিতে। গরুর ওজন নির্নয়ের জন্য গরুকে সমান্তরাল জায়গায় দাড় করাতে হবে এবং ছবির নির্দেশিকা মোতাবেক ফিতা দ্বারা দৈর্ঘ্য (L) ও বুকের বেড়ের (G) মাপ ইঞ্চিতে নিতে হবে। এই মাপ { L (ইঞ্চি) x G2(ইঞ্চি)} ÷ ৬৬০} = ওজন (কেজি) সূত্রে বসালে গরুর ওজন পাওয়া যাবে।
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h3 class="bg-info text-dark">Body Weight Calcualtion</h3>
+
+                <form action="/bodyWeightCalResult/" name="bodyWeight" onsubmit="return validate()" method="POST">
+      {% csrf_token %}
+    <div class="form-group">
+      <label>দৈর্ঘ্য (L)</label>
+      <input type="number" class="form-control" id="bodyLength" placeholder="ফিতা দ্বারা দৈর্ঘ্য (L) ইঞ্চিতে" name="bodyLength">
+    </div>
+    <div class="form-group">
+      <label>বুকের বেড়ের (G)</label>
+      <input type="number" class="form-control" id="bodyGrith" placeholder="বুকের বেড়ের (G) মাপ ইঞ্চিতে" name="bodyGrith">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calculate Body Weight</button>
+  </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>

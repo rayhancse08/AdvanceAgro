@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {% include 'header.html' %}
+</head>
+<body>
+<br>
+<br>
+<br>
+<hr>
+<div class="dialyRoutine">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+              <h3 class="bg-info text-dark" style="text-align: center"> দুগ্ধ খামারের দৈনন্দিন কার্যাবলী </h3>
+            <hr>
+                {% for item in dailyRoutine %}
+
+                   <textarea class="form-control" rows="15" id="comment">{{item.dailyRoutine}} </textarea>
+
+                  <br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {% include 'header.html' %}
+</head>
+<body>
+<br>
+<br>
+<hr>
+<div class="bioSecurity">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="bg-info text-dark" style="text-align: center">খামারের বায়ো-সিকুরিউটিঃ</h3>
+            <hr>
+                {% for item in bioSecurity %}
+
+                   <textarea class="form-control" rows="10" id="comment">{{item.bioSecurity}} </textarea>
+
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>

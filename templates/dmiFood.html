@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'header.html' %}
+    <script type="text/javascript">
+        function aboutDMI(){
+            alert("এখানে DMI দিয়ে বুঝানো হয়েছে ড্রাই মেটার ইনটেইক অর্থাৎ,গৃহীত শুষ্ক খাদ্য।\n" +
+                "কাঁচা ঘাস,খড়, সাইলেজ,দানাদার খাদ্য এই সকলের মধ্যে উপস্থিত ড্রাই মেটার বা শুষ্ক পদার্থ এই খাদ্য গ্রহনের হারের হিসাবের মধ্যে অন্তর্ভুক্ত।");
+        }
+        function validate(){
+            if(document.dmiFood.milkQuantity.value=="")
+            {
+                alert("Please enter Milk Qunatity");
+                document.dmiFood.milkQuantity.focus();
+                return false;
+            }
+            if(document.dmiFood.bodyWeight.value=="")
+            {
+                alert("Please enter Cow Body Weight");
+                document.dmiFood.bodyWeight.focus();
+                return false;
+            }
+
+                chosen = ""
+                len = document.dmiFood.optradio.length;
+
+                for (i = 0; i < len; i++) {
+                    if (document.dmiFood.optradio[i].checked) {
+                        chosen = document.dmiFood.optradio[i].value;
+                    }
+                }
+                if (chosen == "") {
+                    alert("Please select cow status");
+                    return false;
+                }
+
+           return (true);
+        }
+    </script>
+</head>
+<body>
+<br>
+<br>
+<br>
+<hr>
+<div class="dmiFood">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-6">
+                <h3 class="bg-info text-dark" style="text-align: center">শুষ্ক খাদ্য (DMI)</h3>
+                <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+
+                    <tr>
+                        <thead class="thead-light">
+        <th style="text-align: center"> গাভীর ধরন</th>
+        <th style="text-align: center"> খাদ্য গ্রহনের হার </th>
+    </tr>
+                        </thead>
+                    <tr>
+                        <td style="text-align: center">
+                            উচ্চ দুগ্ধদান ক্ষমতা সম্পন্ন
+                        </td>
+                        <td style="text-align: center">
+                            দৈহিক ওজনের ৫%-৬%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">
+                            ভালো দুগ্ধদান ক্ষমতা সম্পন্ন
+                        </td>
+                        <td style="text-align: center">
+                            দৈহিক ওজনের ৩.৫%-৪%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">
+                            ড্রাই বা গাভ
+                        </td>
+                        <td style="text-align: center">
+                            দৈহিক ওজনের ২%-২.৫%
+                        </td>
+                    </tr>
+                </table>
+              <p align="center">
+                  <input type="button" class="btn btn-primary" value="About DMI" onclick="aboutDMI()">
+              </p>
+            </div>
+<div class="col-sm-6">
+
+  <form action="/dmiFoodCal/" name="dmiFood" onsubmit="return validate()" method="POST">
+      {% csrf_token %}
+    <div class="form-group">
+      <label>Milk Qunatity:</label>
+      <input type="number" class="form-control" id="milkQuantity" placeholder="Enter Milk Quantity" name="milkQuantity">
+    </div>
+    <div class="form-group">
+      <label>Cow Body Weight:</label>
+      <input type="number" class="form-control" id="bodyWeight" placeholder="Enter Body Weight" name="bodyWeight">
+    </div>
+    <div class="form-group">
+      <label class="radio-inline">
+      <input type="radio" name="optradio" value="highMilk">High Milk Capacity
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optradio" value="goodMilk">Good Milk Capacity
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optradio" value="dryPreiod">In Dry Preiod
+    </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Calculate DMI Food</button>
+  </form>
+</div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+</body>
+<footer>
+    {%   include 'footer.html' %}
+</footer>
+</html>
