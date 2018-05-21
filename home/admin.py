@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Photo,About,CowFood,VaccineSchedule,BioSecurity,Cow,Disease,DiseaseManagement,DailyRoutine,Document,Medicine,Grass,Breeding,CowDetail,MilkManagement,FoodManagement,File
+from .models import Photo,About,CowFood,VaccineSchedule,BioSecurity,Cow,Disease,DiseaseManagement,DailyRoutine,Document,Medicine,Grass,Breeding,CowDetail,MilkManagement,FoodManagement,File,Costing,Earning
 
 
 
@@ -80,13 +80,13 @@ class CowDetailAdmin(admin.ModelAdmin):
         model=CowDetail
 
 class MilkManagementAdmin(admin.ModelAdmin):
-    list_display=['cow','date','milk_quantity']
+    list_display=['cow','date','milk_quantity','milk_price']
     class Meta:
         model=MilkManagement
 
 
 class FoodManagementAdmin(admin.ModelAdmin):
-    list_display=['cow','date','mixed_food','grass','khor','water']
+    list_display=['cow','date','mixed_food','mixed_food_price','grass','grass_cost','khor','khor_cost','water']
     class Meta:
         model=FoodManagement
 
@@ -94,6 +94,19 @@ class FileAdmin(admin.ModelAdmin):
     list_display=['name','file']
     class Meta:
         model=File
+
+class CostingAdmin(admin.ModelAdmin):
+    list_display=['cow','date','costing_amount','costing_description']
+    class Meta:
+        model=Costing
+
+
+class EarningAdmin(admin.ModelAdmin):
+    list_display=['cow','date','earning_amount','earning_description']
+    class Meta:
+        model=Earning
+
+
 
 
 admin.site.register(Cow,CowAdmin)
@@ -113,6 +126,12 @@ admin.site.register(CowDetail,CowDetailAdmin)
 admin.site.register(MilkManagement,MilkManagementAdmin)
 admin.site.register(FoodManagement,FoodManagementAdmin)
 admin.site.register(File,FileAdmin)
+admin.site.register(Costing,CostingAdmin)
+admin.site.register(Earning,EarningAdmin)
+
+
+
+
 
 
 

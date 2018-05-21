@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%  include 'header.html' %}
+</head>
+<body>
+<br><br>
+<hr>
+<div class="container">
+    {%  if selected_cows %}
+         <h3 class="bg-light" style="text-align: center">Details Profit/Loss Report</h3>
+        <hr>
+        <div class="row">
+        <div class="col-sm-4">
+            <p class="bg-light" style="text-align: center"><strong>Cow No: {{ select_cow }}</strong></p>
+        </div>
+        <div class="col-sm-8">
+            <p class="bg-light" style="text-align: center"><strong>From {{ start_date }} To {{ end_date }}</strong></p>
+        </div>
+        </div>
+    <div class="row">
+
+        <div class="col-sm-4">
+        <h4 class="bg-light" style="text-align: center"> ব্যয় বিবরণ</h4>
+          <table class="table table-hover table-bordered table-sm">
+
+                        <thead>
+                        <tr><th style="text-align: center"> দানাদার খাদ্যের </th>  <td style="text-align: center">
+                        {{ mixed_food_cost}}
+                        </td></tr>
+
+
+                       <tr>
+                           <th style="text-align: center"> ঘাসের  </th>
+                           <td style="text-align: center">
+                          {{ grass_cost}}
+                      </td>
+
+                       </tr>
+
+                      <tr>
+                          <th style="text-align: center"> খড়ের </th>
+                          <td style="text-align: center">
+                         {{ khor_cost}}
+                      </td>
+                      </tr>
+                       <tr><th style="text-align: center"> অন্যান্য  </th>
+                            <td style="text-align: center">
+                         {{ total_other_cost}}
+                      </td>
+                       </tr>
+                        <tr><th style="text-align: center"> মোট  </th>
+                            <td style="text-align: center">
+                      {{ total_cost }}
+                      </td>
+</tr>
+                        </thead>
+          </table>
+
+        </div>
+        <div class="col-sm-4">
+        <h4 class="bg-light" style="text-align: center">আয়ের বিবরণ</h4>
+        <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+
+                        <thead>
+                        <tr><th style="text-align: center"> দুধ বিক্রি </th>  <td style="text-align: center">
+                        {{ milk_price}}
+                        </td></tr>
+
+
+                       <tr>
+                           <th style="text-align: center"> অন্যান্য   </th>
+                           <td style="text-align: center">
+                          {{ total_other_earning}}
+                      </td>
+
+                       </tr>
+
+                      <tr>
+                          <th style="text-align: center"> মোট </th>
+                          <td style="text-align: center">
+                         {{ total_earning}}
+                      </td>
+                      </tr>
+
+                        </thead>
+          </table>
+        </div>
+        <div class="col-sm-4">
+        <h4 class="bg-light" style="text-align: center">লাভ/ক্ষতি</h4>
+        <h4 style="text-align: center">{{ profit_or_loss }}</h4>
+        </div>
+
+        {% endif %}
+
+        <p style="text-align: center">{{ no_data_found }}</p>
+
+    </div>
+
+</div>
+
+
+</body>
+<footer>
+    {% include 'footer.html' %}
+</footer>
+</html>

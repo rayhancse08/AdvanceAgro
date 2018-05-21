@@ -47,7 +47,10 @@ urlpatterns = [
     path('searchMilkManagement/',searchMilkManagement,name='searchMilkManagement'),
     path('foodManagement/',foodManagement,name='foodManagement'),
     path('searchFoodManagement/',searchFoodManagement,name='searchFoodManagement'),
-    path('file/',file,name='file')
+    path('file/',file,name='file'),
+    path('profitLoss/',profitLoss,name='profitLoss'),
+    path('getProfitLoss/',getProfitLoss,name='getProfitLoss/'),
+    path('detailProfitLoss/',detailProfitLoss,name='detailProfitLoss')
 
 ]
 

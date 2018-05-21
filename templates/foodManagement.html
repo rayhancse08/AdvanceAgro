@@ -32,20 +32,21 @@
 </head>
 <body>
 
-<br>
+
 <br>
 <br>
 <hr>
 <div class="container">
-<h3 class="bg-info text-dark" style="text-align: center">Food Managements</h3>
+
+<h3 class="bg-light text-dark" style="text-align: center">Food Managements</h3>
 <hr>
 <form method="get" action="/searchFoodManagement/" name="searchFoodManagement" onsubmit="return(validate());">
-    <div class="row">
+    <div class="row" style="padding-left: 15%;padding-right: 15%">
 
         <div class="col-sm-2">
 
             <div class="form-group">
-      <label for="sel1">Select Cow</label>
+                <label for="sel1"><strong>Select Cow</strong></label>
       <select class="form-control" id="sel1" name="select_cow">
 
         <option selected>{{ select_cow }} </option>
@@ -61,8 +62,8 @@
 
 
 
-<div class="col-sm-5">
-    <label>Start Date</label>
+<div class="col-sm-4">
+    <label><strong>Start Date</strong></label>
     <input id="startdatepicker" width="250" name="startdatepicker" placeholder="mm/dd/yy" value="{{ start_date }}" />
     <script>
         $('#startdatepicker').datepicker({
@@ -71,8 +72,8 @@
     </script>
 </div>
 
-    <div class="col-sm-5">
-    <label>End Date</label>
+    <div class="col-sm-4">
+        <label><strong>End Date</strong></label>
     <input id="enddatepicker" width="250" name="enddatepicker" placeholder="mm/dd/yyyy" value="{{ end_date }}"/>
     <script>
         $('#enddatepicker').datepicker({
@@ -80,16 +81,22 @@
         });
     </script>
 </div>
+
+    <div class="col-sm-2">
+<br>
+       <button type="submit" class="btn btn-outline-dark">Get Food Records</button>
     </div>
-<button type="submit" class="btn btn-primary">Get Food Records</button>
+    </div>
+
 
  </form>
 </div>
 <br>
-<hr>
+
 <div class="container">
+<hr>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12" style="padding-left: 20%;padding-right: 20%">
          {%  if selected_cows %}
             <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
     <tr>
@@ -164,7 +171,7 @@
     </div>
 
 </div>
-
+<br><br>
 </body>
 <footer>
     {% include 'footer.html' %}

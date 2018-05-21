@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
     <script type="text/javascript">
      function validate() {
          if(document.searchMilkManagement.select_cow.value=="")
@@ -30,17 +33,60 @@
          return (true);
      }
     </script>
+
+    <script>
+    var dataPointslist =[];
+</script>
+{%  for item in selected_cows %}
+    <script>
+
+		dataPointslist.push({ x: new Date({{ item.date|date:"Y" }},{{ item.date|date:"m" }}-1,{{ item.date|date:"d" }}), y: {{ item.milk_quantity }}})
+
+    </script>
+{%  endfor %}
+<script>
+window.onload = function () {
+
+var options = {
+	animationEnabled: true,
+
+	axisX: {
+	    title: "Days",
+		valueFormatString: "DD"
+	},
+	axisY: {
+		title: "Quantity",
+
+		includeZero: false
+	},
+	data: [{
+
+		xValueFormatString: "DDMMMYYYY",
+		type: "spline",
+		dataPoints:dataPointslist
+
+
+
+
+
+
+	}]
+};
+$("#chartContainer").CanvasJSChart(options);
+
+}
+</script>
 </head>
 <body>
-<br>
+
 <br>
 <br>
 <hr>
 <div class="container">
-<h3 class="bg-info text-dark" style="text-align: center">Milk Records</h3>
+<h3 class="bg-light text-dark" style="text-align: center">Milk Records</h3>
 <hr>
 <form method="get" action="/searchMilkManagement/" name="searchMilkManagement" onsubmit="return(validate());">
-    <div class="row">
+    <div class="row" style="padding-left: 10%;padding-right: 10%">
 
         <div class="col-sm-2">
 
@@ -61,7 +107,7 @@
 
 
 
-<div class="col-sm-5">
+<div class="col-sm-4" >
     <label>Start Date</label>
     <input id="startdatepicker" width="250" name="startdatepicker" placeholder="mm/dd/yyyy" value="{{ start_date }}" />
     <script>
@@ -71,7 +117,7 @@
     </script>
 </div>
 
-    <div class="col-sm-5">
+    <div class="col-sm-4">
     <label>End Date</label>
     <input id="enddatepicker" width="250" name="enddatepicker" placeholder="mm/dd/yyyy" value="{{ end_date }}"/>
     <script>
@@ -80,17 +126,23 @@
         });
     </script>
 </div>
+
+    <div class="col-sm-2">
+         <br>
+        <button type="submit" class="btn btn-outline-dark">Get Milk Records</button></div>
     </div>
-<button type="submit" class="btn btn-primary">Get Milk Records</button>
+
+
 
  </form>
 </div>
-<br>
-<hr>
+
+{% if selected_cows %}
 <div class="container">
+<hr>
     <div class="row">
-        <div class="col-sm-12">
-        {%  if selected_cows %}
+        <div class="col-sm-4">
+
             <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
     <tr>
                         <thead class="thead-light">
@@ -112,6 +164,7 @@
                       <td style="text-align: center">
                           {% for item in selected_cows %}
                              {{ item.date }}
+
                               <br>
                           {% endfor %}
                       </td>
@@ -123,22 +176,30 @@
                       </td>
                 </tr>
             <tr>
-                {% if selected_cows %}
+
                 <td style="text-align: center">Total</td>
                 <td style="text-align: center">{{ count }}</td>
                 <td style="text-align: center">{{ total.milk_quantity__sum }}</td>
 
-                {% endif %}
             </tr>
             </table>
-        {% endif %}
-        <p style="text-align: center">{{ no_data_found }}</p>
+
+
         </div>
+        <div id="chartContainer"  class="col-sm-8" style="height: 300px; width: 100%;">
+
+        </div>
+
     </div>
 
 </div>
 
+{%  endif %}
+<p style="text-align: center">{{ no_data_found }}</p>
+
 </body>
+<br>
+<br>
 <footer>
     {%   include 'footer.html' %}
 </footer>

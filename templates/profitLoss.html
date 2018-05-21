@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+
+
+    <script type="text/javascript">
+     function validate() {
+
+         if(document.getProfitLoss.startdatepicker.value=="")
+         {
+             alert("Please select start date range");
+             document.getProfitLoss.startdatepicker.focus();
+             return false;
+         }
+         if(document.getProfitLoss.enddatepicker.value=="")
+         {
+             alert("Please select end date range");
+             document.getProfitLoss.enddatepicker.focus();
+             return false;
+         }
+
+         return (true);
+     }
+    </script>
+</head>
+<body>
+<br>
+<br>
+<br>
+<hr>
+<div class="container">
+<h3 class="bg-light" style="text-align: center">Profit/Loss Report </h3>
+<hr>
+<form method="get" action="/getProfitLoss/" name="getProfitLoss" onsubmit="return(validate());">
+
+
+
+<div class="row" style="padding-left: 10%;padding-right: 10%">
+
+<div class="col-sm-4">
+    <strong><label>Start Date</label></strong>
+    <input id="startdatepicker" width="250" name="startdatepicker" placeholder="mm/dd/yy" value="{{ start_date }}" />
+    <script>
+        $('#startdatepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+</div>
+
+    <div class="col-sm-4">
+    <strong><label>End Date</label></strong>
+    <input id="enddatepicker" width="250" name="enddatepicker" placeholder="mm/dd/yyyy" value="{{ end_date }}"/>
+    <script>
+        $('#enddatepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+</div>
+    <div class="col-sm-4">
+        <br>
+        <button type="submit" class="btn btn-outline-dark">Profit/Loss Report</button>
+
+
+    </div>
+
+    </div>
+</form>
+</div>
+
+<br>
+
+
+
+
+<div class="container">
+<hr>
+    {%  if datewise_selected_cows %}
+
+        <hr>
+    <div class="row">
+
+        <div class="col-sm-8">
+
+          <table class="table table-hover table-bordered table-sm">
+
+                        <thead class="thead-light">
+
+                        <th style="text-align: center"> গরু নং </th>
+
+
+
+
+
+
+                           <th style="text-align: center"> ব্যয় বিবরণ  </th>
+
+</td>
+                          <th style="text-align: center"> আয়ের বিবরণ </th>
+                            <th style="text-align: center"> লাভ/ক্ষতি </th>
+
+
+
+                        </thead>
+
+
+<td style="text-align: center">
+                            {%  for item in cow_list %}
+
+
+
+                  <a name="cow" href="{% url 'detailProfitLoss' %}?startdatepicker={{ start_date }}&enddatepicker={{ end_date }}&?cow={{ item }}">{{ item}}</a><br>
+
+              {% endfor %}
+                            </td>
+
+
+<td style="text-align: center">
+{% for item in total_cost_list %}
+
+          {{ item }}<br>
+
+{% endfor %}
+</td>
+<td style="text-align: center">
+{% for item in total_earning_list %}
+
+          {{ item }}<br>
+
+{% endfor %}
+</td>
+          <td style="text-align: center">
+{% for item in profit_loss_list %}
+
+          {{ item }}<br>
+
+{% endfor %}
+          </td>
+          </table>
+
+
+
+
+        </div>
+
+        <div class="col-sm-4">
+        <h4 class="bg-light" style="text-align: center">লাভ/ক্ষতি</h4>
+         <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
+
+                        <thead>
+
+
+
+                       <tr>
+                           <th style="text-align: center">মোট আয় </th>
+                           <td style="text-align: center">
+                          {{ total_earning}}
+                      </td>
+                           <tr><th style="text-align: center"> মোট ব্যয়  </th>  <td style="text-align: center">
+                        {{ total_cost}}
+                        </td></tr>
+
+                       </tr>
+
+                      <tr>
+                          <th style="text-align: center"> মোট লাভ/ক্ষতি </th>
+                          <td style="text-align: center">
+                         {{ total_profit_loss }}
+                      </td>
+                      </tr>
+
+                        </thead>
+          </table>
+        </div>
+
+        {% endif %}
+{{ cow }}
+        <p style="text-align: center">{{ no_data_found }}</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<br>
+<br>
+</body>
+<footer>
+    {%  include 'footer.html' %}
+</footer>
+</html>

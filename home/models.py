@@ -150,7 +150,7 @@ class CowDetail(models.Model):
         ('Calf', 'Calf'),
         ('Fattening','Fattening')
     )
-       cow=models.ForeignKey(Cow,on_delete=models.CASCADE,verbose_name="গরু নং",null=True,blank=True)
+       cow=models.OneToOneField(Cow,on_delete=models.CASCADE,verbose_name="গরু নং",null=True,blank=True,unique=True)
        age=models.FloatField("গরুর বয়স",default=0)
        weight=models.FloatField("গরুর ওজন",default=0)
        number_of_teeth=models.IntegerField("দাঁত সংখ্যা",default=0)
@@ -163,6 +163,7 @@ class MilkManagement(models.Model):
     cow = models.ForeignKey(Cow, on_delete=models.CASCADE, verbose_name="গরু নং", null=True, blank=True)
     date=models.DateField("তারিখ", null=True)
     milk_quantity=models.FloatField("দুধের পরিমান",default=0)
+    milk_price=models.FloatField("দুধের দাম",default=0)
     def __str__(self):
         return str(self.date)
     class Meta:
@@ -174,8 +175,11 @@ class FoodManagement(models.Model):
     cow=models.ForeignKey(Cow,on_delete=models.CASCADE,verbose_name="গরু নং",null=True,blank=True)
     date=models.DateField("তারিখ", null=True)
     mixed_food=models.FloatField("দানাদার খাদ্য(কে.জি)",default=0)
+    mixed_food_price=models.FloatField("দানাদার দাম",default=0)
     grass=models.FloatField("ঘাস(কে.জি)",default=0)
+    grass_cost=models.FloatField("ঘাসের দাম",default=0)
     khor=models.FloatField("খড়(কে.জি)",default=0)
+    khor_cost=models.FloatField("খড়ের দাম",default=0)
     water=models.FloatField("পানি(লিটার)",default=0)
     def __str__(self):
         return str(self.date)
@@ -193,3 +197,14 @@ class File(models.Model):
         ordering = ['upload_time']
         verbose_name_plural="Upload File"
 
+class Costing(models.Model):
+    cow = models.ForeignKey(Cow, on_delete=models.CASCADE, verbose_name="গরু নং", null=True, blank=True)
+    date = models.DateField("তারিখ", null=True)
+    costing_amount=models.FloatField("খরচের পরিমান",default=0)
+    costing_description=models.CharField("খরচের বর্ণনা", max_length=200)
+
+class Earning(models.Model):
+    cow = models.ForeignKey(Cow, on_delete=models.CASCADE, verbose_name="গরু নং", null=True, blank=True)
+    date = models.DateField("তারিখ", null=True)
+    earning_amount = models.FloatField("আয়ের পরিমান", default=0)
+    earning_description = models.CharField("আয়ের বর্ণনা", max_length=200)

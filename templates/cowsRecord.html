@@ -2,6 +2,42 @@
 <html lang="en">
 <head>
     {%  include 'header.html' %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <script>
+    var dataPointslist =[];
+</script>
+{% for i,j in zip_data %}
+    <script>
+
+		dataPointslist.push({ y:{{ i }}, label: "{{ j.status }}" })
+
+    </script>
+{%  endfor %}
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+
+	axisY: {
+		title: "Number of Cows"
+	},
+	data: [{
+		type: "column",
+		showInLegend: true,
+		legendMarkerColor: "grey",
+		legendText: "Cow Status",
+		dataPoints:dataPointslist
+	}]
+});
+chart.render();
+
+}
+</script>
     <script type="text/javascript">
     function validate() {
          if(document.searchCowsRecord.select_cow_status.value=="")
@@ -16,13 +52,20 @@
     </script>
 </head>
 <body>
-<br>
+
 <br>
 <br>
 <hr>
 
 <div class="container">
-<h3 class="bg-info text-dark" style="text-align: center">Cow Record</h3>
+<h3 class="bg-light text-dark" style="text-align: center">Cow Records</h3>
+<hr>
+<div class="row">
+    <div class="col-sm-12" style="padding-right: 20%;padding-left: 20%">
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    </div>
+</div>
+
 <hr>
     <div class="row">
 
@@ -41,13 +84,14 @@
       </select>
  </div>
 
-        <button type="submit" class="btn btn-primary">Search Cow</button>
+        <button type="submit" class="btn btn-outline-dark">Search Cow</button>
 
  </form>
+        <br>
 </div>
 
 
-<div class="col-sm-10">
+<div class="col-sm-8">
 
     <table class="table table-hover table-bordered table-sm" cellpadding="2" border="2" align="left" width="100%">
     <tr>
@@ -63,7 +107,8 @@
 
         </thead>
     </tr>
-{%  for item in selected_cows %}
+
+{%  for item in pages %}
     <tr>
         <td style="text-align: center">
 
@@ -89,13 +134,47 @@
 
 
     </div>
+    <div class="col-sm-2">
+        {%  if selected_cows %}
+        <h6> Total {{ select_cow_status }} Cows: {{ selected_cows.count }}</h6>
+
+{% endif %}
+    </div>
+
+
 
 </div>
+{% if pages.has_other_pages %}
+<ul class="pagination" style="padding-left: 40%">
+    {% if pages.has_previous %}
+    <li class="page-item"><a class="page-link" href="?select_cow_status={{ select_cow_status }}&page={{ pages.previous_page_number }}">Previous</a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    {% endif %}
+{% for i in pages.paginator.page_range %}
+      {% if pages.number == i %}
+        <li class="page-item active"><a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?select_cow_status={{ select_cow_status }}&page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if pages.has_next %}
+          <li class="page-item"><a class="page-link" href="?select_cow_status={{ select_cow_status }}&page={{ pages.next_page_number }}">Next</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        {% endif %}
+</ul>
+{% endif %}
 </div>
+
+<br>
+
 </body>
+
 <br>
 
 <footer>
+
     {%   include 'footer.html' %}
 </footer>
 
